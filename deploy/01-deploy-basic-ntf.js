@@ -6,8 +6,6 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
 
-    log("-------------------------------------------------------");
-
     // Deploy contract
     const args = [];
     const basicNft = await deploy("BasicNft", {
@@ -22,6 +20,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         await verify(basicNft.address, args);
     }
+
     log("-------------------------------------------------------");
 };
 

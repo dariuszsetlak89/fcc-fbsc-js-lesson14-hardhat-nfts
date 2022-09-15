@@ -10,11 +10,6 @@ let tokenUris = [
     "ipfs://QmYQC5aGZu2PTH8XzbJrbDnvhj3gVs7ya33H9mqUNvST3d",
     "ipfs://QmZYmH5iDbD6v3U2ixoVAjioSzvWJszDzYdbeCLquGSpVm",
 ];
-// const imageUris = [
-//     "ipfs://QmSsYRx3LpDAb1GZQm7zZ1AuHZjfbPkD6J7s9r41xu1mf8",
-//     "ipfs://QmYx6GsYAKnNzZ9A6NvEKV9nf1VaDzJrqDR23Y8YSkebLU",
-//     "ipfs://QmUPjADFGEKmfohdTaNcWhp7VGk26h5jXDA7v3VtTnTLcW",
-// ]
 
 const metadataTemplate = {
     name: "",
@@ -65,8 +60,6 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         subscriptionId = networkConfig[chainId].subscriptionId;
     }
 
-    log("-------------------------------------------------------");
-
     // Deploy contract
     const args = [
         vrfCoordinatorV2Address,
@@ -82,12 +75,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         log: true,
         waitConfirmations: network.config.blockConfirmations || 1,
     });
-    log("-------------------------------------------------------");
 
     // Verify the deployment
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         await verify(randomIpfsNft.address, args);
-        log("-------------------------------------------------------");
     }
 
     async function handleTokenUris() {
@@ -108,6 +99,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         console.log(tokenUris);
         return tokenUris;
     }
+
+    log("-------------------------------------------------------");
 };
 
 module.exports.tags = ["all", "randomipfs", "main"];
