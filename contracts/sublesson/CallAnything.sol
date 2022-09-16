@@ -14,6 +14,7 @@
 
 pragma solidity ^0.8.7;
 
+/* istanbul ignore next */
 contract CallAnything {
     address public s_someAddress;
     uint256 public s_amount;

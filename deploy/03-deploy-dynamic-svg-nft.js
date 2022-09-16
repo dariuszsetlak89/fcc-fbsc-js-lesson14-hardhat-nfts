@@ -21,10 +21,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     const highSVG = fs.readFileSync("./images/dynamicNft/happy.svg", { encoding: "utf8" });
 
     // Deploy contract
-    arguments = [ethUsdPriceFeedAddress, lowSVG, highSVG];
+    args = [ethUsdPriceFeedAddress, lowSVG, highSVG];
     const dynamicSvgNft = await deploy("DynamicSvgNft", {
         from: deployer,
-        args: arguments,
+        args: args,
         log: true,
         waitConfirmations: network.config.blockConfirmations || 1,
     });

@@ -56,6 +56,7 @@ module.exports = {
         currency: "USD",
         outputFile: "gas-report.txt",
         noColors: true,
+        token: "ETH", // ETH (default), BNB, MATIC, AVAX
         // coinmarketcap: COINMARKETCAP_API_KEY,
     },
     namedAccounts: {
